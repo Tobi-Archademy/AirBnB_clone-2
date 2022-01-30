@@ -1,0 +1,80 @@
+#!/usr/bin/python3
+"""
+Write a script that starts a Flask web application:
+"""
+
+from flask import Flask
+from flask import render_template
+app = Flask(__name__)
+strict_slashes = False
+
+
+@app.route("/")
+def hello():
+    """ root routing """
+    return "Hello HBNB!"
+
+
+@app.route("/hbnb")
+def hbnb():
+    """ extension hbnb """
+    return "HBNB"
+
+
+@app.route("/c/<arg>")
+def cisfun(arg):
+    """ using dynamic url """
+    string = "C " + arg
+    return string.replace("_", " ")
+
+
+@app.route("/python/")
+@app.route("/python")
+def hello1():
+    """ extension /python """
+    return "Python is cool"
+
+
+@app.route("/python/<arg>")
+def hello2(arg):
+    """ extension python/text """
+    string = "Python " + arg
+    return string.replace("_", " ")
+
+
+@app.route("/number/<int:arg>")
+def num(arg):
+    """ extension number/<num> """
+    num1 = str(arg) + " is a number"
+    return num1
+
+
+@app.route("/number_template/<int:num>")
+def hello5(num):
+    """Returns a template at the /number_template/<n> route,
+    expanding route"""
+    if type(num) == int:
+        return render_template('5-number.html', number=num)
+
+
+@app.route("/number_odd_or_even/<int:n>")
+def hello6(n):
+    if type(n) == int:
+        return render_template('6-number_odd_or_even.html', n=n)
+
+
+@app.teardown_appcontext
+def teardown_DB(response_or_exec):
+    """ tears down the db """
+    storage.close()
+
+
+@app.route("/states_list")
+def hello7():
+    statesArr = list(storage.all("State").values())
+    statesArr.sort(key=lambda statesArr: statesArr.name)
+    return render_template('7-states_list.html', states=statesArr)
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
