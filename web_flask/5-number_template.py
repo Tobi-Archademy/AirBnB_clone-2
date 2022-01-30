@@ -4,6 +4,7 @@ Write a script that starts a Flask web application:
 """
 
 from flask import Flask
+from flask import render_template
 app = Flask(__name__)
 strict_slashes = False
 
@@ -50,7 +51,10 @@ def num(arg):
 
 @app.route("/number_template/<int:num>")
 def hello5(num):
-    return render_template('5-number.html', number=num)
+    """Returns a template at the /number_template/<n> route,
+    expanding route"""
+    if type(num) == int:
+        return render_template('5-number.html', number=num)
 
 
 if __name__ == "__main__":
