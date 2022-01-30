@@ -57,10 +57,10 @@ def hello5(num):
         return render_template('5-number.html', number=num)
 
 
-@app.route("/number_odd_or_even/<int:num>")
+@app.route("/number_odd_or_even/<int:n>")
 def hello6(num):
-    if type(n) == int:
-        return render_template('6--number_odd_or_even.html', number=n)
+    if type(num) == int:
+        return render_template('6-number_odd_or_even.html', number=n)
 
 
 if __name__ == "__main__":
