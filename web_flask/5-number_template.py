@@ -41,11 +41,11 @@ def hello2(arg):
     return string.replace("_", " ")
 
 
-@app.route("/number/<int:num>")
-def hello4(num):
+@app.route("/number/<int:arg>")
+def num(arg):
     """ extension number/<num> """
-
-    return str(num) + " is a number"
+    num1 = str(arg) + " is a number"
+    return num1
 
 
 @app.route("/number_template/<int:num>")
