@@ -25,7 +25,6 @@ def cisfun(arg):
     """ using dynamic url """
     string = "C " + arg
     return string.replace("_", " ")
-    
 
 
 if __name__ == "__main__":
