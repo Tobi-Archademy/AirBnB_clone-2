@@ -44,9 +44,8 @@ def hello2(arg):
 @app.route("/number/<int:arg>")
 def num(arg):
     """ python extention /int """
-    num1 = arg + " is a number"
+    num1 = str(arg) + " is a number"
     return num1
-
 
 
 if __name__ == "__main__":
