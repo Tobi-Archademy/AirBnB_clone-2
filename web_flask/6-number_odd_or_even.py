@@ -59,11 +59,8 @@ def hello5(num):
 
 @app.route("/number_odd_or_even/<int:num>")
 def hello6(num):
-    word = "even"
-    if num % 2:
-        word = "odd"
-    return render_template('6--number_odd_or_even.html', string=word,
-                           number=num)
+    if type(n) == int:
+        return render_template('6--number_odd_or_even.html', number=n)
 
 
 if __name__ == "__main__":
