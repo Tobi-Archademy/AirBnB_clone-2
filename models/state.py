@@ -30,13 +30,3 @@ class State(BaseModel, Base):
                 if city.state_id == self.id:
                     related_cities.append(city)
             return related_cities
-
-    if environ.get('HBNB_TYPE_STORAGE') != 'db':
-        @property
-        def cities(self):
-            """ getter attribute that connects relationship"""
-            cities = [
-                value for key, value in models.storage.all(models.City).items()
-                if value.state_id == self.id
-            ]
-            return cities
