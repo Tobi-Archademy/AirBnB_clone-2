@@ -3,8 +3,8 @@
 
 from models import storage
 from models.state import State
-from flask import Flask
-from flask import render_template
+from flask import Flask, escape, render_template
+
 app = Flask(__name__)
 
 
@@ -13,7 +13,7 @@ def states():
     """Returns a rendered html template
     at the /states_list route,
     listing all states"""
-    states = storage.all.(State).values()
+    states = storage.all(State).values()
     return render_template('7-states_list.html', states=states)
 
 
